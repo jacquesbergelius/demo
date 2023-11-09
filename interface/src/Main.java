@@ -1,13 +1,39 @@
-import java.util.ArrayList;
+import animal.*;
+import animal.fishes.*;
+import human.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Animal> animals = new ArrayList<>();
-        animals.add(new Dog());
-        animals.add(new Cat());
+        List<Animal> animals = new ArrayList<>();
+        List<Human> humans = new ArrayList<>();
+        System.out.println(Animal.getAnimalCount() + " animals created");
 
-        for (Animal animal : animals)
-            animal.eat();
+        animals.add(new animal.Dog("Max", 16));
+        animals.add(new animal.Dog("Donald", 17));
+        animals.add(new Cat("Felix", 17));
+        animals.add(new Cat("Marilyn", 3));
 
+        humans.add(new Man("Enzio Benzino", 24));
+        animal.fishes.Salmon salmon = new Salmon();
+
+        //Collections.sort(animals);
+        Comparator<Animal> ageComparator = new Comparator<Animal>() {
+            @Override
+            public int compare(Animal a1, Animal a2) {
+                return a1.getAge() - a2.getAge();
+            }
+        };
+        Collections.sort(animals, ageComparator);
+        //Collections.sort(animals);
+
+        for (Animal Animal : animals) {
+            System.out.println("animal.Animal name: " + Animal.getName() + " (" + Animal.getAge() + ")");
+            Animal.sound();
+            //animal.eat();
+            //animal.sleep();
+        }
+
+        System.out.println(Animal.getAnimalCount() + " animals created");
     }
 }
