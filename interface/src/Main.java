@@ -27,9 +27,9 @@ public class Main {
         Collections.sort(animals, ageComparator);
         //Collections.sort(animals);
 
-        for (Animal Animal : animals) {
-            System.out.println("animal.Animal name: " + Animal.getName() + " (" + Animal.getAge() + ")");
-            Animal.sound();
+        for (Animal animal : animals) {
+            System.out.println("animal.Animal name: " + animal.getName() + " (" + animal.getAge() + ")");
+            animal.sound();
             //animal.eat();
             //animal.sleep();
         }

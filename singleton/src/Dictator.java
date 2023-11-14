@@ -2,7 +2,7 @@ public class Dictator {
     private static Dictator instance;
     private String dictatorName;
 
-    public Dictator() {
+    private Dictator() {
         dictatorName = "Josef";
     }
 

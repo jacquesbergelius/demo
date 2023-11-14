@@ -1,6 +1,8 @@
 package human;
 
 public class Man extends Human {
+    private final double BEAST = 666;
+
     public Man(String name, int age) {
         super(name, age);
     }
