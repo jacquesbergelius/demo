@@ -1,17 +1,17 @@
 public class Event implements Comparable<Event> {
-    private EvenType type;
-    private long time;
+    private EventType type;
+    private double time;
 
-    public Event(EvenType type, long time) {
+    public Event(EventType type, double time) {
         this.type = type;
         this.time = time;
     }
 
-    public long getTime() {
+    public double getTime() {
         return time;
     }
 
-    public EvenType getType() {
+    public EventType getType() {
         return type;
     }
 
@@ -28,5 +28,4 @@ public class Event implements Comparable<Event> {
             return 1;
         return 0;
     }
-
 }

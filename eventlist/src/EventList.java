@@ -15,6 +15,9 @@ public class EventList {
     }
 
     public Event remove() {
+        if (evenList.isEmpty())
+            return null;
+
         System.out.println("Removing from the event list " + evenList.peek().getType() + " " + evenList.peek().getTime());
         return evenList.remove();
     }
@@ -32,11 +35,11 @@ public class EventList {
 
         // generate events
         for (int i = 0; i < 10; i++) {
-            EvenType type;
+            EventType type;
             if (random.nextBoolean())
-                type = EvenType.ARR;
+                type = EventType.ARR;
             else
-                type = EvenType.DEP;
+                type = EventType.DEP;
             eventList.add(new Event(type, random.nextInt(1000)));
         }
 
