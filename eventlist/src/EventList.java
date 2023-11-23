@@ -10,7 +10,7 @@ public class EventList {
     }
 
     public void add(Event e) {
-        System.out.println("Adding to the event list " + e.getType() + " " + e.getTime());
+        System.out.printf(" Adding to the event list %s %.2f\n", e.getType(), e.getTime());
         evenList.add(e);
     }
 
@@ -18,8 +18,14 @@ public class EventList {
         if (evenList.isEmpty())
             return null;
 
-        System.out.println("Removing from the event list " + evenList.peek().getType() + " " + evenList.peek().getTime());
+        System.out.printf(" Removing from the event list %s %.2f", evenList.peek().getType(), evenList.peek().getTime());
         return evenList.remove();
+    }
+
+    public double getNextEventTime() {
+        if (evenList.isEmpty())
+            return 0;
+        return evenList.peek().getTime();
     }
 
     public void print() {

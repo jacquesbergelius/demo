@@ -8,7 +8,7 @@ public class Customer {
         id = i++;
 
         arrivalTime = Clock.getInstance().getClock();
-        System.out.println("New customer #" + id + " arrived at " + arrivalTime);
+        System.out.printf(" New customer #%d arrived at %.2f", id, arrivalTime);
     }
 
     public Customer(double arrivalTime) {
