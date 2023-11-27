@@ -10,7 +10,16 @@ public class Main {
         System.out.printf("The value of a is %6.2f, the value of b is %6.2f\n", a, b);
         System.out.printf("Integer print %02d:%02d %s, then blabla\n", k, k + 7);
     }
+    public static final int[] tf(int[] a) {
+        int[] b = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            b[i] = a[i] * a[i];
+        }
+        return b;
+    }
     public static void main(String[] args) {
+
+        int zz[] = tf(new int[]{1, 2, 3}); // anonymous array (an initialization list needs the new-operator)
 
         try {
             f();
