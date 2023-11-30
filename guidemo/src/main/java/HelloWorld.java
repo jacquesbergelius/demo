@@ -1,5 +1,6 @@
 public class HelloWorld {
     public static void main(String[] args) {
-        HelloWorldApplication.launch(HelloWorldApplication.class);
+        //HelloWorldApplication.launch(HelloWorldApplication.class);
+        LayoutDemo.launch(LayoutDemo.class);
     }
 }
