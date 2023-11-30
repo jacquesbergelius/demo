@@ -8,7 +8,8 @@ public class AutoTest {
             "six\n" + "one\n";
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(input);    // Not System.in, but a string!
+        //Scanner reader = new Scanner(input);    // Not System.in, but a string!
+        Scanner reader = new Scanner(System.in); // Normal input
 
         ArrayList<String> read = new ArrayList<>();
 

@@ -45,7 +45,7 @@ public class EventList {
             if (random.nextBoolean())
                 type = EventType.ARR;
             else
-                type = EventType.DEP;
+                type = EventType.DEP1;
             eventList.add(new Event(type, random.nextInt(1000)));
         }
 

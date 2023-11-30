@@ -10,11 +10,13 @@ public class ServicePoint {
     private ContinuousGenerator generator;
     private EventList eventList;
     private EventType eventTypeScheduled;
+    private String name;
     private double serviceTimeSum;
     private int customerServiced;
     private boolean reserved = false;
 
-    public ServicePoint(ContinuousGenerator g, EventList tl, EventType type) {
+    public ServicePoint(String name, ContinuousGenerator g, EventList tl, EventType type) {
+        this.name = name;
         this.generator = g;
         this.eventList = tl;
         this.eventTypeScheduled = type;
@@ -32,10 +34,6 @@ public class ServicePoint {
     public Customer removeFromQueue() {
         if (queue.size() > 0) {
             Customer a = queue.removeLast();
-            a.setRemovalTime(Clock.getInstance().getClock());
-            double serviceTime = a.getRemovalTime() - a.getArrivalTime();
-            System.out.printf(" %sCustomer #%d serviced, service time: %.2f%s\n", GREEN, a.getId(), serviceTime, WHITE);
-            serviceTimeSum += serviceTime;
             customerServiced++;
             reserved = false;
             return a;
@@ -44,7 +42,7 @@ public class ServicePoint {
     }
 
     public void beginService() {
-        System.out.printf("%sStarting a new service for the customer #%d%s", GREEN, queue.peek().getId(), WHITE);
+        System.out.printf("%sStarting service %s for the customer #%d%s", GREEN, name, queue.peek().getId(), WHITE);
 
         reserved = true;
         double serviceTime = generator.sample();

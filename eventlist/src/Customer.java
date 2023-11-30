@@ -1,6 +1,9 @@
 public class Customer {
+    private static final String YELLOW = "\033[0;33m";
+    private static final String WHITE = "\033[0;37m";
     private double arrivalTime;
     private double removalTime;
+    private static double serviceTimeSum;
     private int id;
     private static int i = 1;
 
@@ -35,8 +38,10 @@ public class Customer {
     }
 
     public void reportResults() {
-        System.out.println("Customer #" + id + " arrived: " + arrivalTime);
-        System.out.println("Customer #" + id + " removed: " + removalTime);
-        System.out.println("Customer #" + id + " stayed:  " + (removalTime-arrivalTime));
+        serviceTimeSum += (removalTime - arrivalTime);
+        double meanServiceTime = serviceTimeSum / id;   // id is the number of customers serviced
+
+        System.out.printf(" %sCustomer #%d has been serviced. Customer arrived: %.2f removed: %.2f stayed: %.2f mean %.2f%s\n",
+                YELLOW, id, arrivalTime, removalTime, (removalTime-arrivalTime), meanServiceTime, WHITE);
     }
 }
