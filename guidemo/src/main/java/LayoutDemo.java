@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -101,12 +102,25 @@ public class LayoutDemo extends Application {
 
             view.getStylesheets().add("style.css");
         } else if (sel == 5) {
+            System.out.println("Starting canvas demo");
             window.setTitle("Canvas Demo");
 
             Canvas canvas = new Canvas(200, 200);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setFill(Color.GREEN);
             gc.fillOval(70, 70, 60, 30);
+
+            canvas.setFocusTraversable(true);
+            canvas.setOnKeyPressed(event -> {
+                KeyCode keyCode = event.getCode();
+                System.out.println("Key pressed: " + keyCode);
+            });
+
+            canvas.setOnMouseMoved(event -> {
+                double x = event.getX();
+                double y = event.getY();
+                System.out.println("Mouse moved to (" + x + ", " + y + ")");
+            });
 
             StackPane root = new StackPane(canvas);
             view = new Scene(root, 200, 200);
