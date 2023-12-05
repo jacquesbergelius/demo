@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/guidemo/pom.xml" />
         <option value="$PROJECT_DIR$/guigame/pom.xml" />
+        <option value="$PROJECT_DIR$/guibmi/pom.xml" />
+        <option value="$PROJECT_DIR$/dbdemo/pom.xml" />
       </list>
     </option>
   </component>
