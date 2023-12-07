@@ -1,8 +1,10 @@
+package simu.framework;
+
 public class Event implements Comparable<Event> {
-    private EventType type;
+    private IEventType type;
     private double time;
 
-    public Event(EventType type, double time) {
+    public Event(IEventType type, double time) {
         this.type = type;
         this.time = time;
     }
@@ -11,7 +13,7 @@ public class Event implements Comparable<Event> {
         return time;
     }
 
-    public EventType getType() {
+    public IEventType getType() {
         return type;
     }
 

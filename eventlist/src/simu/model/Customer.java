@@ -1,3 +1,7 @@
+package simu.model;
+
+import simu.framework.Clock;
+
 public class Customer {
     private static final String YELLOW = "\033[0;33m";
     private static final String WHITE = "\033[0;37m";
@@ -41,7 +45,7 @@ public class Customer {
         serviceTimeSum += (removalTime - arrivalTime);
         double meanServiceTime = serviceTimeSum / id;   // id is the number of customers serviced
 
-        System.out.printf(" %sCustomer #%d has been serviced. Customer arrived: %.2f removed: %.2f stayed: %.2f mean %.2f%s\n",
+        System.out.printf(" %sCustomer #%d has been serviced. simu.model.Customer arrived: %.2f removed: %.2f stayed: %.2f mean %.2f%s\n",
                 YELLOW, id, arrivalTime, removalTime, (removalTime-arrivalTime), meanServiceTime, WHITE);
     }
 }

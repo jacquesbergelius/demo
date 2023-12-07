@@ -1,4 +1,5 @@
-import eduni.distributions.Negexp;
+import simu.framework.Engine;
+import simu.model.MyEngine;
 
 public class Main {
     public static void main(String[] args) {

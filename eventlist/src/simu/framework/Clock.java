@@ -1,3 +1,5 @@
+package simu.framework;
+
 public class Clock {
     private static Clock instance;
     private double clock;

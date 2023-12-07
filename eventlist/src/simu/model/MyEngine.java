@@ -1,5 +1,8 @@
-import eduni.distributions.Negexp;
-import eduni.distributions.Normal;
+package simu.model;
+
+import eduni.distributions.*;
+import simu.framework.*;
+
 
 /* Simulate a queueing system with one service point and one queue.
  * The service time is normally distributed with mean 10.
@@ -26,7 +29,7 @@ public class MyEngine extends Engine {
     protected void runEvent(Event e) {
        Customer a;
 
-       switch (e.getType()) {
+       switch ((EventType) e.getType()) {
             case ARR:
                 servicePoint[0].addToQueue(new Customer());
                 arrivalProcess.generateNextEvent();

@@ -1,5 +1,11 @@
+package simu.model;
+
 import eduni.distributions.ContinuousGenerator;
 import eduni.distributions.Normal;
+import simu.framework.Clock;
+import simu.framework.Event;
+import simu.framework.EventList;
+import simu.model.Customer;
 
 import java.util.LinkedList;
 
@@ -69,7 +75,7 @@ public class ServicePoint {
         Customer a;
         Normal normalGenerator = new Normal(5, 1);
 
-        //Clock.getInstance().setClock(Clock.getInstance().getClock() + 5);
+        //simu.framework.Clock.getInstance().setClock(simu.framework.Clock.getInstance().getClock() + 5);
         a = removeFromQueue();
         while (a != null) {
             Clock.getInstance().setClock(Clock.getInstance().getClock() + normalGenerator.sample());
