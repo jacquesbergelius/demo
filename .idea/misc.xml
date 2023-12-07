@@ -9,7 +9,13 @@
         <option value="$PROJECT_DIR$/guibmi/pom.xml" />
         <option value="$PROJECT_DIR$/dbdemo/pom.xml" />
         <option value="$PROJECT_DIR$/jpademo/pom.xml" />
+        <option value="$PROJECT_DIR$/jpaassociation/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/jpademo/jpaassociation/pom.xml" />
+      </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>

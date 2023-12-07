@@ -15,5 +15,9 @@ public class CompanyApp {
 
         emp.setLastName("Koski");
         empdao.update(emp);
+
+        emp = empdao.find(2);
+        emp.setSalary(4321.0);
+        empdao.update(emp);
     }
 }
