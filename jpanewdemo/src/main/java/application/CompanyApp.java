@@ -7,17 +7,17 @@ public class CompanyApp {
 
         EmployeeDao empdao = new EmployeeDao();
 
-        empdao.persist(new Employee("Viivi", "Puro", "viivip@mymail.fi", 7300.00));
-        empdao.persist(new Employee("Tero", "Koski", "tero.koski@mymail.fi", 3750.00));
+        //empdao.persist(new Employee("Viivi", "Puro", 23, "viivip@mymail.fi", 7300.00));
+        //empdao.persist(new Employee("Tero", "Koski", 44, "tero.koski@mymail.fi", 3750.00));
 
-        Employee emp = empdao.find(1);
+        Employee emp = empdao.find(3);
         System.out.println(emp.getFirstName() + " " + emp.getLastName());
 
-        emp.setLastName("Koski");
+        emp.setLastName("Benzino"); emp.setAge(51);
         empdao.update(emp);
 
         emp = empdao.find(2);
-        emp.setSalary(4321.0);
+        emp.setSalary(14532.0); emp.setAge(33);
         empdao.update(emp);
     }
 }

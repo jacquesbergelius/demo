@@ -13,7 +13,8 @@ public class Main {
         try (Writer writer = new FileWriter(filename);
              BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
             for (int i = 0; i < values.length; i++) {
-                bufferedWriter.write((i+1) + ";" + toEuropianString(values[i])); bufferedWriter.newLine();  // Write a new line
+                //bufferedWriter.write((i+1) + ";" + toEuropianString(values[i])); bufferedWriter.newLine();  // Write a new line
+                bufferedWriter.write(String.format("%d;%.18f", i+1, values[i])); bufferedWriter.newLine();  // Write a new line
             }
 
             // It is important to flush or close the writer to ensure the data is written to the file
@@ -23,8 +24,9 @@ public class Main {
             System.out.println("Close the file");
         }
     }
+
     public static void main(String args[]) {
-        Negexp source = new Negexp(0.1);    // 1 Customer / 10 minutes
+        ContinuousGenerator source = new Negexp(0.1);    // 1 Customer / 10 minutes
         double[] val = new double[N];
 
         for (int i=0; i<val.length; i++) {

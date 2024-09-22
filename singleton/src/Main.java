@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        A a1 = new A(), a2 = new A(), a3 = new A();
+        A a1 = new A("Ruben"), a2 = new A("Isaskar"), a3 = new A("Viola");
         B b1 = new B(), b2 = new B(), b3 = new B();
 
         System.out.println(a1.getMyBoss());

@@ -11,13 +11,15 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 public class LayoutDemo extends Application {
+    private static final int SEL = 2;
     @Override
     public void start(Stage window) {
         Scene view = null;
 
-        int sel = 5;
-        if (sel == 0) {
+        if (SEL == 0) {
             window.setTitle("BorderPane Demo");
             BorderPane layout = new BorderPane();
 
@@ -46,12 +48,12 @@ public class LayoutDemo extends Application {
             layout.setBottom(componentGroup);
 
             layout.setAlignment(topButton, Pos.CENTER);
-            layout.setAlignment(bottomButton, Pos.CENTER);
+            layout.setAlignment(componentGroup, Pos.CENTER);
 
             layout.setAlignment(leftButton, Pos.CENTER_LEFT);
             layout.setAlignment(rightButton, Pos.CENTER_RIGHT);
             view = new Scene(layout);
-        } else if (sel == 1) {
+        } else if (SEL == 1) {
             window.setTitle("GridPane Demo");
             GridPane layout = new GridPane();
 
@@ -68,40 +70,42 @@ public class LayoutDemo extends Application {
             layout.add(button5, 0, 2, 2, 1);
 
             view = new Scene(layout);
-        } else if (sel == 2) {
+        } else if (SEL == 2) {
             HBox layout = new HBox();
 
             Button[] buttons = new Button[12];
 
             for (int i = 0; i < 12; i++) {
                 buttons[i] = new Button(Integer.toString(i + 1));
+                buttons[i].setOnAction(new ButtonBoy(Integer.toString(i + 1)));
                 layout.getChildren().add(buttons[i]);
             }
 
             view = new Scene(layout);
             view.getStylesheets().add("style.css");
-        } else if (sel == 3) {
+        } else if (SEL == 3) {
             StackPane layout = new StackPane();
 
             Button button1 = new Button("[           ]");
             Label label = new Label("Hello!");
 
-            label.setOpacity(0.9);
+            label.setOpacity(0.5);
 
             layout.getChildren().add(button1);
             layout.getChildren().add(label);
 
             view = new Scene(layout);
-        } else if (sel == 4) {
+        } else if (SEL == 4) {
             VBox layout = new VBox();
 
             Button button = new Button("CLICK ME!");
+            button.setOnAction(new ButtonBoy("Green button"));
             layout.getChildren().add(button);
 
             view = new Scene(layout);
 
             view.getStylesheets().add("style.css");
-        } else if (sel == 5) {
+        } else if (SEL == 5) {
             System.out.println("Starting canvas demo");
             window.setTitle("Canvas Demo");
 
@@ -124,13 +128,25 @@ public class LayoutDemo extends Application {
 
             StackPane root = new StackPane(canvas);
             view = new Scene(root, 200, 200);
+        } else if (SEL == 6) {
+            /* Check the screen size */
+            Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+            System.out.println("Screen size, width " + screenSize.width + ", height " + screenSize.height);
+            double width = screenSize.getWidth() / 3;
+            double height = screenSize.getHeight() / 2;
+
+            try {
+                window.setScene(new Scene(new AnchorPane(), width, height));
+                window.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         window.setScene(view);
         window.show();
     }
 
-    public static void main(String[] args) {
-        launch(LayoutDemo.class);
-    }
+    /* JavaFX does not start inside the GUI class */
+    //public static void main(String[] args) { LayoutDemo.launch(LayoutDemo.class); }
 }
