@@ -11,9 +11,19 @@ public class Main {
         return Math.abs(number) * 2;    // intentionally incorrect implementation
     }
 
+    public static double commathree() {
+        return 0.1 + 0.2;
+        //return 0.5 + 0.25;
+    }
+
     public static void main(String[] args) {
         int n = 3;
 
-        System.out.println("Number " + n + " is even: " + isEven(n));
+        if (addOne(6) == 7)
+            System.out.println("Hyvin kävi");
+        else
+            System.out.println("Virhe!");
+
+        //System.out.println("Number " + n + " is even: " + isEven(n));
     }
 }

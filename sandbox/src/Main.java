@@ -1,3 +1,19 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+class MeitinLuokka implements Consumer<Integer> {
+    @Override
+    public void accept(Integer integer) {
+        System.out.println(integer);
+    }
+}
+@FunctionalInterface
+interface Calculable {
+    public int calculate(int a);
+}
+
 public class Main {
     private static void f() {
         int k = 5;
@@ -18,7 +34,31 @@ public class Main {
         return b;
     }
     public static void main(String[] args) {
+        int salainen = 10;
 
+        Calculable c = a->(a+salainen);
+        System.out.println(c.calculate(666));
+        salainen = 11;
+        System.out.println(c.calculate(666));
+
+        List<Integer> numbers
+                = Arrays.asList(11, 22, 33, 44,
+                55, 66, 77, 88,
+                99, 100);
+
+        int largest = Integer.MIN_VALUE;
+        for (Integer n : numbers) {
+            if (n % 2 != 0) {
+                int temp = n/2;
+
+                if (temp > largest)
+                    largest = temp;
+            }
+        }
+        System.out.println(largest);
+
+
+        /*
         int zz[] = tf(new int[]{1, 2, 3}); // anonymous array (an initialization list needs the new-operator)
 
         try {
@@ -27,5 +67,6 @@ public class Main {
             System.out.println("Something went wrong");
             e.printStackTrace();
         }
+         */
     }
 }

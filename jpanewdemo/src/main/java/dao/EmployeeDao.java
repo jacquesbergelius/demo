@@ -3,6 +3,8 @@ package dao;
 import entity.*;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class EmployeeDao {
 
     public void persist(Employee emp) {
@@ -16,6 +18,13 @@ public class EmployeeDao {
         EntityManager em = datasource.MariaDbJpaConnection.getInstance();
         Employee emp = em.find(Employee.class, id);
         return emp;
+    }
+
+    public List<Employee> findAll() {
+        EntityManager em = datasource.MariaDbJpaConnection.getInstance();
+        List<Employee> emps = em.createQuery("select e from Employee e").getResultList();
+        //List<Employee> emps = em.createQuery("from Employee").getResultList();
+        return emps;
     }
 
     public void update(Employee emp) {

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.awt.*;
 
 public class LayoutDemo extends Application {
-    private static final int SEL = 2;
+    private static final int SEL = 5;
     @Override
     public void start(Stage window) {
         Scene view = null;
@@ -59,7 +59,7 @@ public class LayoutDemo extends Application {
 
             Button button1 = new Button("TOP LEFT");
             Button button2 = new Button("TOP RIGHT");
-            Button button3 = new Button("BOTTOM LEFT");
+            Button button3 = new Button("BOTTOM LEFT The quick brown fox jumps over the lazy dog");
             Button button4 = new Button("BOTTOM RIGHT");
             Button button5 = new Button("MIDDLE (with long text)");
 
@@ -72,14 +72,16 @@ public class LayoutDemo extends Application {
             view = new Scene(layout);
         } else if (SEL == 2) {
             HBox layout = new HBox();
+            //VBox layout = new VBox();
 
             Button[] buttons = new Button[12];
 
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < buttons.length; i++) {
                 buttons[i] = new Button(Integer.toString(i + 1));
                 buttons[i].setOnAction(new ButtonBoy(Integer.toString(i + 1)));
                 layout.getChildren().add(buttons[i]);
             }
+            System.out.println(layout.getChildren());
 
             view = new Scene(layout);
             view.getStylesheets().add("style.css");
@@ -107,12 +109,18 @@ public class LayoutDemo extends Application {
             view.getStylesheets().add("style.css");
         } else if (SEL == 5) {
             System.out.println("Starting canvas demo");
+            /* Check the screen size */
+            Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+            System.out.println("Screen size, width " + screenSize.width + ", height " + screenSize.height);
+            int width = (int)Math.round(screenSize.getWidth() / 4);
+            int height = (int)Math.round(screenSize.getHeight() / 3);
+
             window.setTitle("Canvas Demo");
 
-            Canvas canvas = new Canvas(200, 200);
+            Canvas canvas = new Canvas(width, height);
             GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setFill(Color.GREEN);
-            gc.fillOval(70, 70, 60, 30);
+            gc.setFill(Color.GREEN); gc.fillOval(width/2-60/2, height/2-60/2-7, 60, 60);
+            gc.moveTo(0, 0); gc.lineTo(width-1, height-1); gc.stroke();
 
             canvas.setFocusTraversable(true);
             canvas.setOnKeyPressed(event -> {
@@ -123,11 +131,11 @@ public class LayoutDemo extends Application {
             canvas.setOnMouseMoved(event -> {
                 double x = event.getX();
                 double y = event.getY();
-                System.out.println("Mouse moved to (" + x + ", " + y + ")");
+                System.out.println("Mouse moved to (" + Math.round(x) + ", " + Math.round(y) + ")");
             });
 
             StackPane root = new StackPane(canvas);
-            view = new Scene(root, 200, 200);
+            view = new Scene(root, width, height);
         } else if (SEL == 6) {
             /* Check the screen size */
             Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();

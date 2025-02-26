@@ -40,6 +40,11 @@ class MainTest {
     }
 
     @Test
+    void commaThree() {
+        assertEquals(0.3, Main.commathree(), "Yhteenlasku meni väärin");
+    }
+
+    @Test
     void testMethod1() {
         System.out.println("**--- Test method1 executed ---**");
     }
